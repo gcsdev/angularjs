@@ -2,16 +2,18 @@
 <html ng-app="gemStore">
 	<head>
 		 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    	 <link rel="stylesheet" type="text/css" href="css/style.css" />
     	 <script type="text/javascript" src="angular.min.js"></script>
          <script type="text/javascript" src="app.js"></script>
 		<title>Flantanders Store</title>
 	</head>
 	<body ng-controller="StoreController as store">
-		<div class="product row">
-		<h3>
-			{{store.product.name}}
-			<em class="pull-right">{{store.product.price}}</em>	
-		</h3>
+		<div ng-repeat="product in store.products" class="product row">
+			<h1>{{product.name}}</h1>
+			<h2>{{product.price}}</h2>
+			<p>{{product.description}}</p>
+			<button ng-show="product.canPurchase">Add to Cart</button>	
+		<hr>
 		</div>
 	</body>
 </html>
