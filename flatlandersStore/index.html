@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+	<head>
+		 <link rel="stylesheet" type="text/css" href="./css/bootstrap.css"/>
+    	 <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    	 <script type="text/javascript" src="angular.min.js"></script>
+         <script type="text/javascript" src="app.js"></script>
+		<title>Flatlanders Store</title>
+	</head>
+	<body ng-controller="generalController as general">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h1 style="text-align:center;">Flatlander Crafted Gems</h1></div>
+				<div class="panel-body">
+					<div ng-repeat="product in general.products" >
+						<div class="product">
+				     		 <h3><span style="margin-right:50%;">{{product.name}}</span><span> {{product.price | currency}}</span></h3>
+				      		 <img  ng-src="{{product.images[0]}}" alt="..."/>
+				      		 <br><br><br>     			        	
+	     			         <section ng-init="nav.setTab(1)" ng-controller="navController as nav" >
+	     			        	 <ul class="nav nav-pills">
+	  								<li ng-class="{active:nav.isSelected(1)}" role="presentation" class="active">
+	  									<a ng-click="nav.setTab(1)" href>Description</a>
+	  								</li>
+									<li ng-class="{active:nav.isSelected(2)"role="presentation">
+										<a ng-click="nav.setTab(2)" href>Specifications</a>
+									</li>
+									<li ng-class="{active:nav.isSelected(3)" role="presentation">
+										<a ng-click="nav.setTab(3)" href >Reviews</a></li>
+	     						 </ul>
+	     						 <div class="panel" ng-show="nav.isSelect(1)" >
+	     						 	<h4 style="text-align:left;">Description</h4>
+									<p>{{product.description}}</p>
+	     						 </div>
+	     						 <div class="panel" ng-show="nav.isSelect(2)" >
+	     						 	<h4 style="text-align:left;">Specification</h4>
+									<p>{{product.specifications}}</p>
+	     						 </div>
+	     						 <div class="panel" ng-show="nav.isSelect(3)" >
+	     						 	<h4 style="text-align:left;">Reviews</h4>
+									<p>{{product.reviews}}</p>
+	     						 </div>
+	     					</section>
+
+				        </div>
+					</div>	
+				</div>
+			<div style="text-align:center;" class="panel-footer">Undertanding Angular</div>	
+	</body>
+</html>
+
